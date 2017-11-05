@@ -43,3 +43,27 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+// SET EXPENSES
+// will manipulate redux store
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+//async action. will fetch the data
+export const startSetExpenses = () => { 
+
+    return (dispatch) => { //return function which will have access to dispatch
+        return database.ref('expenses').once('value').then((snapshot) => {
+            const expenses = [];
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({ //push expenses on an array
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setExpenses(expenses));
+        });
+    }
+} 
