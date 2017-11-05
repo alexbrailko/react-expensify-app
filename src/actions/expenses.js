@@ -52,6 +52,14 @@ export const editExpense = (id, updates) => ({
   updates
 });
 
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => { //return function which will have access to dispatch
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    }
+};
+
 // SET EXPENSES
 // will manipulate redux store
 export const setExpenses = (expenses) => ({
