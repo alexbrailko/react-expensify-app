@@ -31,11 +31,53 @@ exports[`should render EditExpensePage correctly 1`] = `
       onSubmit={[Function]}
     />
     <button
-      className="button button--secondary"
+      className="button button--secondary removeButton"
       onClick={[Function]}
     >
       Remove
     </button>
   </div>
+  <Modal
+    ariaHideApp={true}
+    bodyOpenClassName="ReactModal__Body--open"
+    closeTimeoutMS={0}
+    contentLabel="Are you sure you want to delete?"
+    isOpen={false}
+    onRequestClose={[Function]}
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    shouldFocusAfterRender={true}
+    shouldReturnFocusAfterClose={true}
+    style={
+      Object {
+        "content": Object {
+          "bottom": "auto",
+          "left": "50%",
+          "marginRight": "-50%",
+          "right": "auto",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+        },
+      }
+    }
+  >
+    <h3>
+      Are you sure you want to delete?
+    </h3>
+    <button
+      className="yes"
+      onClick={[Function]}
+    >
+      yes
+    </button>
+    <button
+      className="no"
+      onClick={[Function]}
+    >
+      no
+    </button>
+  </Modal>
 </div>
 `;

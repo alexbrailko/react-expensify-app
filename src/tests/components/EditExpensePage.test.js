@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { findDOMNode } from 'react-dom';
 import { EditExpensePage } from '../../components/EditExpensePage';
 import expenses from '../fixtures/expenses';
+import Modal from 'react-modal';
 
 let startEditExpense,  startRemoveExpense, history, wrapper;
 
@@ -30,7 +32,15 @@ test('should handle startEditExpense', () => {
 });
 
 test('should handle startRemoveExpense', () => {
-    wrapper.find('button').simulate('click');
+    wrapper.find('button.yes').simulate('click');
     expect(history.push).toHaveBeenLastCalledWith('/');
     expect(startRemoveExpense).toHaveBeenLastCalledWith({ id: expenses[2].id });
 });
+
+test('should render modal', () => {
+    const modal = wrapper.find('Modal');
+    wrapper.find('button.removeButton').simulate('click');
+    expect(modal).toHaveLength(1); 
+    expect(wrapper.state('modalIsOpen')).toEqual(true);
+});
+ 
